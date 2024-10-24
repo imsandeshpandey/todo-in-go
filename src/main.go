@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	fileServer := http.FileServer(http.Dir("../frontend"))
+	fileServer := http.FileServer(http.Dir("./frontend"))
 
 	http.HandleFunc("/todos", todo.TodosHandler)
 	http.HandleFunc("/todos/", todo.TodoByIdHandler)
