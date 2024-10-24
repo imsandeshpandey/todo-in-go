@@ -1,0 +1,45 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./index.css" />
+    <title>Todo App using go</title>
+  </head>
+  <body>
+    <div id="root">
+      <div id="content">
+        <i id="title"> <i data-lucide="pencil"></i> Todo App using Go! </i>
+        <div id="add-todo">
+          <input id="todo-input" type="text" placeholder="Water the plants" />
+          <div id="add-todo-buttons-row">
+            <button
+              id="add-todo-btn"
+              class="btn btn-outline"
+              style="gap: 0.25rem"
+            >
+              <i data-lucide="plus" class="size-4-icon"></i> Add Todo
+            </button>
+          </div>
+        </div>
+        <div id="my-todos">
+          <h1>My Todos</h1>
+          <div id="todos-container">
+            <!-- Todos go here  -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>
