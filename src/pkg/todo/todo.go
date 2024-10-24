@@ -1,8 +1,7 @@
-package main
+package todo
 
 import (
 	"encoding/json"
-	"fmt"
 	"io"
 	"net/http"
 	"sync"
@@ -29,7 +28,7 @@ var (
 	todoMutex sync.Mutex
 )
 
-func todosHandler(w http.ResponseWriter, r *http.Request) {
+func TodosHandler(w http.ResponseWriter, r *http.Request) {
 	switch r.Method {
 	case "GET":
 		w.Header().Set("Content-Type", "application/json")
@@ -70,7 +69,7 @@ func todosHandler(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func todoByIdHandler(w http.ResponseWriter, r *http.Request) {
+func TodoByIdHandler(w http.ResponseWriter, r *http.Request) {
 	id := r.URL.Path[len("/todos/"):]
 	if id == "" {
 		http.Error(w, "Invalid request", http.StatusBadRequest)
@@ -126,19 +125,4 @@ func todoByIdHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Method not allowed", http.StatusMethodNotAllowed)
 	}
 
-}
-
-func main() {
-	fileServer := http.FileServer(http.Dir("./static"))
-
-	http.HandleFunc("/todos", todosHandler)
-	http.HandleFunc("/todos/", todoByIdHandler)
-
-	http.Handle("/", fileServer)
-	fmt.Println("App is running on port 3000")
-
-	err := http.ListenAndServe(":3000", nil)
-	if err != nil {
-		fmt.Println("Error starting server", err)
-	}
 }

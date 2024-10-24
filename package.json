@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "build": "go build -o bin/todo-app.exe src/main.go",
+    "dev": "go run src/main.go",
+    "clean": "rm -rf bin/*"
+  }
+}

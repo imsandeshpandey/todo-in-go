@@ -72,6 +72,7 @@ async function addTodo(todo) {
     /** @type {ApiTodo} */
 
     const newTodo = await res.json();
+    todoInput.value = "";
     addTodoToContainer(newTodo);
   } catch {
     console.log("Error adding todo");
@@ -109,12 +110,16 @@ async function deleteTodo(id) {
 }
 
 async function startEditTodo(id) {
-  isEditing = true;
-  editingTodoId = id;
-
   if (!todos.has(id)) return;
   const todo = todos.get(id);
   todoInput.value = todo.name;
+  todoInput.focus();
+  editingTodoId = id;
+
+  if (isEditing) return;
+
+  isEditing = true;
+
   addTodoBtn.innerHTML = "Update";
 
   const addTodoRowEl = document.getElementById("add-todo-buttons-row");
